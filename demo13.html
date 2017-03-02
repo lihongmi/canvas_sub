@@ -1,0 +1,109 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas 图片 之深入谈  </title>
+	<style>
+	
+	</style>
+</head>
+<body>
+	<canvas id="myCanvas" style="border:1px solid #ddd;display:block;margin:20px auto;"></canvas>
+	<script>
+		var myCanvas=document.getElementById("myCanvas");
+		myCanvas.width="500";
+		myCanvas.height="300";
+		var ctx=myCanvas.getContext("2d");
+
+		//画图 女汉子
+		var nvhanziImg=new Image();
+		nvhanziImg.src="images/nvhanzi.jpg";
+		nvhanziImg.onload=function(){
+
+			//ctx.drawImage(nvhanziImg,dx,dy,dw,dh);
+
+			ctx.drawImage(nvhanziImg,225,125,50,50);
+		}
+		
+		
+		//2 画精灵图片
+		// source源  destination 目标地
+		var nvjingli=new Image();
+		nvjingli.src="images/jinglingnvhai.jpg";
+		var nv2={
+				x:82,
+				y:0,
+				w:84,
+				h:110
+		};
+
+
+		nvjingli.onload=function(){
+
+		//语法 ctx.drawImage(nvjingli,s.x,s.y,s.w,s.h,d.x,d.y,d.w,d.h);
+
+		ctx.drawImage(nvjingli,nv2.x,nv2.y,nv2.w,nv2.h,0,0,nv2.w/2,nv2.h/2);
+
+
+		}
+		
+		//3.圣诞老人驾车
+		var shengdanP=[
+			{
+					x:0,
+					y:0,
+					w:220,
+					h:80
+			},
+			{
+					x:220,
+					y:0,
+					w:220,
+					h:80
+			},
+			{
+					x:440,
+					y:0,
+					w:220,
+					h:80
+			},
+			{
+					x:660,
+					y:0,
+					w:220,
+					h:80
+			},
+		];
+		var shengdanImg=new Image();
+		shengdanImg.src="images/christmas.jpg";
+
+		shengdanImg.onload=function(){
+	
+			setInterval(pao,100);
+		}
+	
+		
+		var index=0;
+		function pao(){
+			if(index==shengdanP.length){
+				index=0;
+			}
+			var sx=shengdanP[index].x;
+			var sy=shengdanP[index].y;
+			var sw=shengdanP[index].w;
+			var sh=shengdanP[index].h;
+
+			ctx.drawImage(shengdanImg,sx,sy,sw,sh,10,125,sw*2/3,sh*2/3);
+			index++;
+
+		}
+
+
+
+	</script>
+</body>
+</html>

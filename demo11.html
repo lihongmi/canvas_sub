@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas 渐变--径向渐变  </title>
+	<style>
+	
+	</style>
+</head>
+<body>
+	<canvas id="myCanvas" style="border:1px solid #ddd;display:block;margin:20px auto;"></canvas>
+	<script>
+		var myCanvas=document.getElementById("myCanvas");
+		myCanvas.width="500";
+		myCanvas.height="300";
+		var ctx=myCanvas.getContext("2d");
+
+		//创建径向渐变对象
+		var rg=ctx.createRadialGradient(110,110,1,110,110,110);
+
+		rg.addColorStop(0,"#f00");
+		rg.addColorStop(0.5,"rgb(238,182,231)");
+		rg.addColorStop(1,"blue");
+
+		//带径向渐变矩形
+		ctx.fillStyle=rg;
+		ctx.fillRect(10,10,200,200);
+
+		//创建径向渐变的圆
+
+		var rg1=ctx.createRadialGradient(310,61,1,310,111,100);
+		rg1.addColorStop(0,"#fff");
+		rg1.addColorStop(1,"black");
+
+		ctx.beginPath();
+		ctx.arc(310,111,100,0,Math.PI*2);
+		ctx.fillStyle=rg1;
+		ctx.fill();
+		ctx.closePath();
+
+	</script>
+</body>
+</html>

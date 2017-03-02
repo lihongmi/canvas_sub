@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas 渐变--线性渐变  </title>
+	<style>
+		#box{
+			width:100px;
+			height:200px;
+			background:-webkit-linear-gradient(red,blue);
+		}
+
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<canvas id="myCanvas" style="border:1px solid #ddd;display:block;margin:20px auto;"></canvas>
+	<script>
+		var myCanvas=document.getElementById("myCanvas");
+		myCanvas.width="500";
+		myCanvas.height="300";
+		var ctx=myCanvas.getContext("2d");
+
+		//创建线性渐变对象
+		var lg=ctx.createLinearGradient(10,10,210,110);
+		lg.addColorStop(0,"red");
+		lg.addColorStop(1,"blue");
+
+		//带线性渐变矩形
+		ctx.fillStyle=lg;
+		ctx.fillRect(10,10,200,100);
+
+		//带线性渐变圆
+		var lg1=ctx.createLinearGradient(80,130,140,200);
+		lg1.addColorStop(0,"green");
+		lg1.addColorStop(1,"yellow");
+
+		ctx.beginPath();
+		ctx.arc(105,160,50,0,Math.PI*2);
+		ctx.fillStyle=lg1;
+		ctx.fill();
+		ctx.closePath();
+
+	</script>
+</body>
+</html>

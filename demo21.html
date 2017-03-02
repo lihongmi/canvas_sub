@@ -1,0 +1,78 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas 事件操作  </title>
+
+</head>
+<body>
+
+	<canvas id="myCanvas" style="display:block;border:1px solid #ddd;margin:auto">
+	</canvas>
+
+	<script>
+		var CANVAS_WIDTH=300;
+		var CANVAS_HEIGHT=300;
+
+		var myCanvas=document.getElementById("myCanvas");
+
+		myCanvas.width=CANVAS_WIDTH;
+		myCanvas.height=CANVAS_HEIGHT;
+		
+		var huabi=myCanvas.getContext("2d");
+
+		huabi.fillRect(10,10,100,100);
+		huabi.strokeStyle="red";
+		huabi.strokeRect(110,110,100,100);
+
+		function drawCircle(){
+			huabi.beginPath();
+			huabi.arc(160,60,50,0,Math.PI*2);
+			huabi.stroke();
+			huabi.closePath();
+		}
+
+		drawCircle();
+
+		function drawSanjiao(){
+			huabi.beginPath();
+			huabi.moveTo(60,110);
+			huabi.lineTo(110,210);
+			huabi.lineTo(10,210);
+			huabi.lineTo(60,110);
+			huabi.stroke();
+			huabi.closePath();
+	    }
+	    drawSanjiao();
+
+		myCanvas.onclick=function(event){
+			var e=event||window.event;
+
+			var x=e.clientX-myCanvas.offsetLeft;
+			var y=e.clientY-myCanvas.offsetTop;
+
+			if(x>=10&&x<=110&&y>=10&&y<=110){
+				alert("你点中了黑色矩形");
+			}else if(x>=110&&x<=210&&y>=110&&y<=210){
+				alert("你点中了红色矩形");
+			}else{
+				drawCircle();
+				if(huabi.isPointInPath(x,y)){
+					alert("你点击了圆圈");
+				}
+				drawSanjiao();
+				if(huabi.isPointInPath(x,y)){
+					alert("你点击了三角");
+				}
+
+			}
+
+		}
+
+	</script>
+</body>
+</html>

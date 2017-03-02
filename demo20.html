@@ -1,0 +1,83 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas 图片组合操作  </title>
+
+</head>
+<body>
+
+	<canvas id="myCanvas" style="display:block;border:1px solid #ddd;margin:auto">
+	</canvas>
+
+	<script>
+		var CANVAS_WIDTH=300;
+		var CANVAS_HEIGHT=300;
+
+		var myCanvas=document.getElementById("myCanvas");
+		myCanvas.width=CANVAS_WIDTH;
+		myCanvas.height=CANVAS_HEIGHT;
+
+		//ctx.globalAlpha=0.5;
+
+		var compositeArr=[
+			"source-over","destination-over",
+			"source-atop","destination-atop",
+			"destination-in","source-in",
+			"source-out","destination-out",
+			"lighter","copy","xor"
+		];
+
+
+		var i=0,l=compositeArr.length;
+		draw(compositeArr[i]);
+
+		setInterval(function(){
+			i++;
+			if(i==l){
+				i=0;
+			}
+			draw(compositeArr[i]);
+
+		
+		},1000);
+			
+	
+
+		function draw(type){
+			var ctx=myCanvas.getContext("2d");
+
+			ctx.clearRect(0,0,300,300);
+
+
+			ctx.fillStyle="blue";
+			ctx.fillRect(0,0,100,100);
+
+			ctx.globalCompositeOperation=type;
+
+			ctx.beginPath();
+				ctx.arc(100,100,100,0,Math.PI*2);
+				ctx.fillStyle="red";
+				ctx.fill();
+			ctx.closePath();
+
+			ctx.globalCompositeOperation="source-over";
+
+			ctx.font="30px Arial";
+			ctx.strokeText(compositeArr[i],0,250);
+
+
+		}
+		
+
+
+
+
+
+	</script>
+</body>
+</html>

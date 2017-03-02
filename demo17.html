@@ -1,0 +1,51 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas 阴影  </title>
+	<style>
+		 canvas{
+			box-shadow: 0px 0px 10px #f00;
+		} 
+	</style>
+</head>
+<body>
+
+	<canvas id="myCanvas" style="border:1px solid #ddd;display:block;margin:auto">
+	</canvas>
+
+
+
+	<script>
+		var CANVAS_WIDTH=300;
+		var CANVAS_HEIGHT=200;
+
+		var myCanvas=document.getElementById("myCanvas");
+		myCanvas.width=CANVAS_WIDTH;
+		myCanvas.height=CANVAS_HEIGHT;
+
+
+		var ctx=myCanvas.getContext("2d");
+
+		var img=new Image();
+		img.src="images/twodog.jpg";
+		img.onload=function(){
+
+			ctx.shadowColor="#222";
+			ctx.shadowBlur="10";
+			ctx.shadowOffsetX="5";
+			ctx.shadowOffsetY="5";
+
+			ctx.drawImage(img,(CANVAS_WIDTH-200)/2,(CANVAS_HEIGHT-100)/2,200,100);
+
+
+
+		}
+
+	</script>
+</body>
+</html>

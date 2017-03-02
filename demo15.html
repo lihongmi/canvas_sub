@@ -1,0 +1,53 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas坐标操作  移动  </title>
+	<style>
+	
+	</style>
+</head>
+<body>
+	<canvas id="myCanvas" style="border:1px solid #ddd;display:block;margin:20px auto">
+	</canvas>
+	
+
+
+	<script>
+	
+		var drawRect=document.getElementById("drawRect");
+
+
+		myCanvas.width="500";
+		myCanvas.height="300";
+		var ctx=myCanvas.getContext("2d");
+
+	
+		//绘制球
+		var x=0,y=0;
+		setInterval(function(){
+			ctx.save();
+
+			ctx.clearRect(x-11,y-11,22,22);
+
+			x+=5;
+			y+=5;
+			ctx.translate(x,y);
+
+		
+			ctx.beginPath();
+			ctx.arc(0,0,10,0,2*Math.PI,false);
+			ctx.stroke();
+			ctx.closePath();
+
+			ctx.restore();
+
+		},100);
+
+	</script>
+</body>
+</html>

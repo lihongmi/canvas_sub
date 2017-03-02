@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas画线</title>
+</head>
+<body>
+	<canvas id="myCanvas" style="border:1px solid #ddd;display:block;margin:20px auto;"></canvas>
+	<script>
+		var myCanvas=document.getElementById("myCanvas");
+		myCanvas.width="500";
+		myCanvas.height="300";
+
+		var cxt=myCanvas.getContext("2d");
+		//画三角形
+		cxt.moveTo(50,50);
+		cxt.lineTo(250,100);
+		cxt.lineTo(50,200);
+		cxt.lineTo(50,50);
+
+		//画直线
+		cxt.moveTo(350,50);
+		cxt.lineTo(350,200);
+
+		//定义画线样式
+		cxt.strokeStyle="red";
+		cxt.lineWidth="5";
+
+		cxt.lineCap="round";
+
+		cxt.stroke();
+
+	
+	</script>
+</body>
+</html>

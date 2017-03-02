@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas矩形</title>
+</head>
+<body>
+	<canvas id="myCanvas" style="border:1px solid #ddd;display:block;margin:20px auto;"></canvas>
+	<script>
+		var myCanvas=document.getElementById("myCanvas");
+		myCanvas.width="500";
+		myCanvas.height="300";
+
+		var cxt=myCanvas.getContext("2d");
+		//方法一
+	
+		cxt.moveTo(100,50);
+		cxt.lineTo(300,50);
+		cxt.lineTo(300,200);
+		cxt.lineTo(100,200);
+		cxt.lineTo(100,50);
+		cxt.fill();
+
+		//cxt.stroke();
+
+		//方法二
+		//cxt.strokeStyle="red";
+		//cxt.strokeRect(0,0,300,40);
+
+		cxt.fillStyle="red";
+		cxt.fillRect(0,0,300,40);
+	
+	</script>
+</body>
+</html>

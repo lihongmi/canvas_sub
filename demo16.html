@@ -1,0 +1,47 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas像素操作  </title>
+	<style>
+		
+	</style>
+</head>
+<body>
+	<canvas id="myCanvas" style="border:1px solid #ddd;display:block;margin:auto">
+	</canvas>
+	<canvas id="myCanvas2" style="border:1px solid red;display:block;margin:auto">
+	</canvas>
+	
+
+
+	<script>
+		var CANVAS_WIDTH=300;
+		var CANVAS_HEIGHT=200;
+
+		var myCanvas=document.getElementById("myCanvas");
+		var myCanvas2=document.getElementById("myCanvas2");
+
+		myCanvas2.width=myCanvas.width=CANVAS_WIDTH;
+		myCanvas2.height=myCanvas.height=CANVAS_HEIGHT;
+
+		var ctx=myCanvas.getContext("2d");
+		var ctx2=myCanvas2.getContext("2d");
+
+		ctx.fillRect(10,10,200,100);
+		ctx.beginPath();
+		ctx.arc(200,100,50,0,Math.PI*2);
+		ctx.closePath();
+		ctx.fillStyle="red";
+		ctx.fill();
+	
+		var imgData=ctx.getImageData(0,0,CANVAS_WIDTH,CANVAS_HEIGHT);
+		ctx2.putImageData(imgData,0,0);
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas 图片保存  </title>
+
+</head>
+<body>
+	<div style="width:900px;text-align: center;margin:0 auto;">
+	图片<img id="tupian" src="" alt="图片暂时没有" style="vertical-align: middle">
+	<br/>
+	canvas<canvas style="vertical-align: middle" id="myCanvas" style="border:1px solid #ddd;margin:auto">
+	</canvas>
+	</div>
+
+	<script>
+		var CANVAS_WIDTH=300;
+		var CANVAS_HEIGHT=200;
+
+		var myCanvas=document.getElementById("myCanvas");
+		var tupian=document.getElementById("tupian");
+		myCanvas.width=CANVAS_WIDTH;
+		myCanvas.height=CANVAS_HEIGHT;
+
+
+		var ctx=myCanvas.getContext("2d");
+
+		var guniang=new Image();
+		guniang.src="images/huaituzi.jpg";
+		guniang.onload=function(){
+
+			ctx.drawImage(guniang,50,40,200,119);
+			ctx.moveTo(0,0);
+			ctx.lineTo(CANVAS_WIDTH,CANVAS_HEIGHT);
+			ctx.stroke();
+
+
+			var dataStr=myCanvas.toDataURL();
+			tupian.src=dataStr;
+			//location.href=dataStr;
+
+		}
+
+
+
+	</script>
+</body>
+</html>

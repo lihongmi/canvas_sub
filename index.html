@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>大家都能看懂的 canvas基础教程</title>
+    <style type="text/css">
+    html{font-family: sans-serif;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%}body{margin: 0}article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display: block}audio,canvas,progress,video{display: inline-block;vertical-align: baseline}audio:not([controls]){display: none;height: 0}[hidden],template{display: none}a{background: transparent}a:active,a:hover{outline: 0}abbr[title]{border-bottom: 1px dotted}b,strong{font-weight: bold}dfn{font-style: italic}h1{font-size: 2em;margin: 0.67em 0}mark{background: #ff0;color: #000}small{font-size: 80%}sub,sup{font-size: 75%;line-height: 0;position: relative;vertical-align: baseline}sup{top: -0.5em}sub{bottom: -0.25em}img{border: 0}svg:not(:root){overflow: hidden}figure{margin: 1em 40px}hr{box-sizing: content-box;height: 0}pre{overflow: auto}code,kbd,pre,samp{font-family: monospace, monospace;font-size: 1em}button,input,optgroup,select,textarea{color: inherit;font: inherit;margin: 0}button{overflow: visible}button,select{text-transform: none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance: button;cursor: pointer}button[disabled],html input[disabled]{cursor: default}button::-moz-focus-inner,input::-moz-focus-inner{border: 0;padding: 0}input{line-height: normal}input[type="checkbox"],input[type="radio"]{box-sizing: border-box;padding: 0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height: auto}input[type="search"]{-webkit-appearance: textfield;box-sizing: content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance: none}fieldset{border: 1px solid #c0c0c0;margin: 0 2px;padding: 0.35em 0.625em 0.75em}legend{border: 0;padding: 0}textarea{overflow: auto}optgroup{font-weight: bold}table{border-collapse: collapse;border-spacing: 0}td,th{padding: 0}*{box-sizing: border-box}input,select,textarea,button{font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"}body{min-width: 1020px;font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";color: #333;background-color: #fff}a{color: #4183c4;text-decoration: none}a:hover,a:active{text-decoration: underline}hr,.rule{height: 0;margin: 15px 0;overflow: hidden;background: transparent;border: 0;border-bottom: 1px solid #ddd}hr:before,.rule:before{display: table;content: ""}hr:after,.rule:after{display: table;clear: both;content: ""}h1,h2,h3,h4,h5,h6{margin-top: 15px;margin-bottom: 15px;line-height: 1.1}h1{font-size: 30px}h2{font-size: 21px}h3{font-size: 16px}h4{font-size: 14px}h5{font-size: 12px}h6{font-size: 11px}small{font-size: 90%}blockquote{margin: 0}.lead{margin-bottom: 30px;font-size: 20px;font-weight: 300;color: #555}.text-muted{color: #999}.text-danger{color: #bd2c00}.text-emphasized{font-weight: bold;color: #333}ul,ol{padding: 0;margin-top: 0;margin-bottom: 0}ol ol,ul ol{list-style-type: lower-roman}ul ul ol,ul ol ol,ol ul ol,ol ol ol{list-style-type: lower-alpha}dd{margin-left: 0}tt,code{font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;font-size: 12px}pre{margin-top: 0;margin-bottom: 0;font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace}#realtime .status{overflow: visible;position: absolute;top: -5px;left: 0;background: url("/public/images/github-status.png");width: 26px;height: 26px;display: block;margin: 0 5px 0 0}#realtime .up{background-position: 0 0}#realtime .problem{background-position: 0 -53px}#realtime .down{background-position: 0 -26px}.container{max-width: 920px;margin: 0 auto 20px auto}#header{background: #FAFAFA;background: -moz-linear-gradient(#FAFAFA, #EAEAEA);background: -webkit-linear-gradient(#FAFAFA, #EAEAEA);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa', endColorstr='#eaeaea')";border-bottom: 1px solid #CACACA;box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4),0 0 10px rgba(0, 0, 0, 0.1)}#markup{padding: 3px}#markup article{padding-top: 30px}.markdown-body{overflow: hidden;font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;font-size: 16px;line-height: 1.6;word-wrap: break-word}.markdown-body>*:first-child{margin-top: 0 !important}.markdown-body>*:last-child{margin-bottom: 0 !important}.markdown-body .absent{color: #c00}.markdown-body .anchor{position: absolute;top: 0;left: 0;display: block;padding-right: 6px;padding-left: 30px;margin-left: -30px}.markdown-body .anchor:focus{outline: none}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{position: relative;margin-top: 1em;margin-bottom: 16px;font-weight: bold;line-height: 1.4}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{display: none;color: #000;vertical-align: middle}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{padding-left: 8px;margin-left: -30px;text-decoration: none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{display: inline-block}.markdown-body h1 tt,.markdown-body h1 code,.markdown-body h2 tt,.markdown-body h2 code,.markdown-body h3 tt,.markdown-body h3 code,.markdown-body h4 tt,.markdown-body h4 code,.markdown-body h5 tt,.markdown-body h5 code,.markdown-body h6 tt,.markdown-body h6 code{font-size: inherit}.markdown-body h1{padding-bottom: 0.3em;font-size: 2.25em;line-height: 1.2;border-bottom: 1px solid #eee}.markdown-body h1 .anchor{line-height: 1}.markdown-body h2{padding-bottom: 0.3em;font-size: 1.75em;line-height: 1.225;border-bottom: 1px solid #eee}.markdown-body h2 .anchor{line-height: 1}.markdown-body h3{font-size: 1.5em;line-height: 1.43}.markdown-body h3 .anchor{line-height: 1.2}.markdown-body h4{font-size: 1.25em}.markdown-body h4 .anchor{line-height: 1.2}.markdown-body h5{font-size: 1em}.markdown-body h5 .anchor{line-height: 1.1}.markdown-body h6{font-size: 1em;color: #777}.markdown-body h6 .anchor{line-height: 1.1}.markdown-body p,.markdown-body blockquote,.markdown-body ul,.markdown-body ol,.markdown-body dl,.markdown-body table,.markdown-body pre{margin-top: 0;margin-bottom: 16px}.markdown-body hr{height: 4px;padding: 0;margin: 16px 0;background-color: #e7e7e7;border: 0 none}.markdown-body ul,.markdown-body ol{padding-left: 2em}.markdown-body ul.no-list,.markdown-body ol.no-list{padding: 0;list-style-type: none}.markdown-body ul ul,.markdown-body ul ol,.markdown-body ol ol,.markdown-body ol ul{margin-top: 0;margin-bottom: 0}.markdown-body li>p{margin-top: 16px}.markdown-body dl{padding: 0}.markdown-body dl dt{padding: 0;margin-top: 16px;font-size: 1em;font-style: italic;font-weight: bold}.markdown-body dl dd{padding: 0 16px;margin-bottom: 16px}.markdown-body blockquote{padding: 0 15px;color: #777;border-left: 4px solid #ddd}.markdown-body blockquote>:first-child{margin-top: 0}.markdown-body blockquote>:last-child{margin-bottom: 0}.markdown-body table{display: block;width: 100%;overflow: auto;word-break: normal;word-break: keep-all}.markdown-body table th{font-weight: bold}.markdown-body table th,.markdown-body table td{padding: 6px 13px;border: 1px solid #ddd}.markdown-body table tr{background-color: #fff;border-top: 1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color: #f8f8f8}.markdown-body img{max-width: 100%;box-sizing: border-box}.markdown-body span.frame{display: block;overflow: hidden}.markdown-body span.frame>span{display: block;float: left;width: auto;padding: 7px;margin: 13px 0 0;overflow: hidden;border: 1px solid #ddd}.markdown-body span.frame span img{display: block;float: left}.markdown-body span.frame span span{display: block;padding: 5px 0 0;clear: both;color: #333}.markdown-body span.align-center{display: block;overflow: hidden;clear: both}.markdown-body span.align-center>span{display: block;margin: 13px auto 0;overflow: hidden;text-align: center}.markdown-body span.align-center span img{margin: 0 auto;text-align: center}.markdown-body span.align-right{display: block;overflow: hidden;clear: both}.markdown-body span.align-right>span{display: block;margin: 13px 0 0;overflow: hidden;text-align: right}.markdown-body span.align-right span img{margin: 0;text-align: right}.markdown-body span.float-left{display: block;float: left;margin-right: 13px;overflow: hidden}.markdown-body span.float-left span{margin: 13px 0 0}.markdown-body span.float-right{display: block;float: right;margin-left: 13px;overflow: hidden}.markdown-body span.float-right>span{display: block;margin: 13px auto 0;overflow: hidden;text-align: right}.markdown-body code,.markdown-body tt{padding: 0;padding-top: 0.2em;padding-bottom: 0.2em;margin: 0;font-size: 85%;background-color: rgba(0,0,0,0.04);border-radius: 3px}.markdown-body code:before,.markdown-body code:after,.markdown-body tt:before,.markdown-body tt:after{letter-spacing: -0.2em;content: "\00a0"}.markdown-body code br,.markdown-body tt br{display: none}.markdown-body del code{text-decoration: inherit}.markdown-body pre>code{padding: 0;margin: 0;font-size: 100%;word-break: normal;white-space: pre;background: transparent;border: 0}.markdown-body .highlight{margin-bottom: 16px}.markdown-body .highlight pre,.markdown-body pre{padding: 16px;overflow: auto;font-size: 85%;line-height: 1.45;background-color: #f7f7f7;border-radius: 3px}.markdown-body .highlight pre{margin-bottom: 0;word-break: normal}.markdown-body pre{word-wrap: normal}.markdown-body pre code,.markdown-body pre tt{display: inline;max-width: initial;padding: 0;margin: 0;overflow: initial;line-height: inherit;word-wrap: normal;background-color: transparent;border: 0}.markdown-body pre code:before,.markdown-body pre code:after,.markdown-body pre tt:before,.markdown-body pre tt:after{content: normal}.markdown-body kbd{display: inline-block;padding: 3px 5px;font-size: 11px;line-height: 10px;color: #555;vertical-align: middle;background-color: #fcfcfc;border: solid 1px #ccc;border-bottom-color: #bbb;border-radius: 3px;box-shadow: inset 0 -1px 0 #bbb}.codehilite{background: #ffffff}.codehilite .c{color: #999988;font-style: italic}.codehilite .err{color: #a61717;background-color: #e3d2d2}.codehilite .k{color: #000000;font-weight: bold}.codehilite .o{color: #000000;font-weight: bold}.codehilite .cm{color: #999988;font-style: italic}.codehilite .cp{color: #999999;font-weight: bold}.codehilite .c1{color: #999988;font-style: italic}.codehilite .cs{color: #999999;font-weight: bold;font-style: italic}.codehilite .gd{color: #000000;background-color: #ffdddd}.codehilite .gd .x{color: #000000;background-color: #ffaaaa}.codehilite .ge{color: #000000;font-style: italic}.codehilite .gr{color: #aa0000}.codehilite .gh{color: #999999}.codehilite .gi{color: #000000;background-color: #ddffdd}.codehilite .gi .x{color: #000000;background-color: #aaffaa}.codehilite .go{color: #888888}.codehilite .gp{color: #555555}.codehilite .gs{font-weight: bold}.codehilite .gu{color: #aaaaaa}.codehilite .gt{color: #aa0000}.codehilite .kc{color: #000000;font-weight: bold}.codehilite .kd{color: #000000;font-weight: bold}.codehilite .kp{color: #000000;font-weight: bold}.codehilite .kr{color: #000000;font-weight: bold}.codehilite .kt{color: #445588;font-weight: bold}.codehilite .m{color: #009999}.codehilite .s{color: #d14}.codehilite .na{color: #008080}.codehilite .nb{color: #0086B3}.codehilite .nc{color: #445588;font-weight: bold}.codehilite .no{color: #008080}.codehilite .ni{color: #800080}.codehilite .ne{color: #990000;font-weight: bold}.codehilite .nf{color: #990000;font-weight: bold}.codehilite .nn{color: #555555}.codehilite .nt{color: #000080}.codehilite .nv{color: #008080}.codehilite .ow{color: #000000;font-weight: bold}.codehilite .w{color: #bbbbbb}.codehilite .mf{color: #009999}.codehilite .mh{color: #009999}.codehilite .mi{color: #009999}.codehilite .mo{color: #009999}.codehilite .sb{color: #d14}.codehilite .sc{color: #d14}.codehilite .sd{color: #d14}.codehilite .s2{color: #d14}.codehilite .se{color: #d14}.codehilite .sh{color: #d14}.codehilite .si{color: #d14}.codehilite .sx{color: #d14}.codehilite .sr{color: #009926}.codehilite .s1{color: #d14}.codehilite .ss{color: #990073}.codehilite .bp{color: #999999}.codehilite .vc{color: #008080}.codehilite .vg{color: #008080}.codehilite .vi{color: #008080}.codehilite .il{color: #009999}
+    </style>
+    <style type="text/css">
+      .markdown-body hr{background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC")}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="markup">
+        <article id="content" class="markdown-body">
+          <h1>大家都能看懂的 canvas入门基础教程</h1>
+<h2><img alt="" src="data:image/png;base64,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"></h2>
+<p>原文链接: <a href="http://www.shitu91.com/cms/canvasSub/index.html">http://www.shitu91.com/cms/canvasSub/index.html</a></p>
+<!-- MarkdownTOC -->
+
+<ul>
+<li><a href="#01canvas简单的认识">01.canvas简单的认识</a></li>
+<li><a href="#02绘制-一个带有填充颜色的-矩形相关代码">02.绘制 一个带有填充颜色的 矩形相关代码</a></li>
+<li><a href="#03画线">03.画线</a></li>
+<li><a href="#04画矩形">04.画矩形</a></li>
+<li><a href="#05路径的开始与关闭">05.路径的开始与关闭</a></li>
+<li><a href="#06canvas-画圆-画弧">06.canvas 画圆 画弧</a></li>
+<li><a href="#07canvas-添加图片--添加文字">07.canvas 添加图片  添加文字</a></li>
+<li><a href="#08canvas-橡皮擦--物体运动本质是图形不断的擦除与绘制">08.canvas 橡皮擦  物体运动(本质是图形不断的擦除与绘制)</a></li>
+<li><a href="#09-canvas-鼠标画笔">09. canvas 鼠标画笔</a></li>
+<li><a href="#10canvas-渐变线性渐变">10.canvas 渐变线性渐变</a></li>
+<li><a href="#11canvas-渐变之径向渐变">11.canvas 渐变之径向渐变</a></li>
+<li><a href="#12canvas-填充--图案">12.canvas 填充--图案</a></li>
+<li><a href="#13canvas-图片-之深入谈">13.canvas 图片 之深入谈</a></li>
+<li><a href="#14canvas-save--restore">14.canvas save &amp;&amp; restore</a></li>
+<li><a href="#15canvas-坐标操作--移动translate-旋转rotate-缩放scale">15.canvas 坐标操作  移动(translate) 旋转(rotate) 缩放(scale)</a></li>
+<li><a href="#16像素操作">16.像素操作</a></li>
+<li><a href="#16canvas像素操作补充">16.canvas像素操作_补充</a></li>
+<li><a href="#17canvas-阴影">17.canvas 阴影</a></li>
+<li><a href="#18canvas-裁剪">18.canvas 裁剪</a></li>
+<li><a href="#19canvas-图片保存">19.canvas 图片保存</a></li>
+<li><a href="#20图形组合">20.图形组合</a></li>
+<li><a href="#21-canvas-事件操作">21. canvas 事件操作</a></li>
+</ul>
+<!-- /MarkdownTOC -->
+
+<p><a name="01canvas简单的认识"></a>
+01.canvas简单的认识</p>
+<hr>
+<blockquote>
+<p>canvas 是html5提供给我们的一个绘图标签
+默认大小 300X150   背景透明</p>
+</blockquote>
+<div class="codehilite"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;UTF-8&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>canvas简单的认识<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;canvas</span> <span class="na">id=</span><span class="s">&quot;myCanvas&quot;</span> <span class="na">style=</span><span class="s">&quot;border:1px solid #ddd;display:block;margin:20px auto;&quot;</span><span class="nt">&gt;&lt;/canvas&gt;</span>
+
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+
+
+<p>效果图 如下 <a href="demo01.html">查看案例</a></p>
+<p><img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUMAAACnCAYAAACLkT4nAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAINSURBVHhe7dRBDcAwEMCw8edYLLdAaB97dLKlUMgzAIwZAsQMAWKGADFDgJghQLZmuNaSpKs6tT1DgFuYIUDMECBmCBAzBIgZAsQMAWKGADFDgJghQMwQIGYIEDMEiBkCxAwBYoYAMUOAmCFAzBAgZggQMwSIGQLEDAFihgAxQ4CYIUDMECBmCBAzBIgZAsQMAWKGADFDgJghQMwQIGYIEDMEiBkCxAwBYoYAMUOAmCFAzBAgZggQMwSIGQLEDAFihgAxQ4CYIUDMECBmCBAzBIgZAsQMAWKGADFDgJghQMwQIGYIEDMEiBkCxAwBYoYAMUOAmCFAzBAgZggQMwSIGQLEDAFihgAxQ4CYIUDMECBmCBAzBIgZAsQMAWKGADFDgJghQMwQIGYIEDMEiBkCxAwBYoYAMUOAmCFAzBAgZggQMwSIGQLEDAFihgAxQ4CYIUDMECBmCBAzBIgZAsQMAWKGADFDgJghQMwQIGYIEDMEiBkCxAwBYoYAMUOAmCFAzBAgZggQMwSIGQLEDAFihgAxQ4CYIUDMECBmCBAzBIgZAsQMAWKGADFDgJghQMwQIGYIEDMEiBkCxAwBYoYAMUOAmCFAzBAgZggQMwSIGQLEDAFihgAxQ4CYIUDMECBmCBAzBIgZAuTTGUrSTZ3amiHA35khQMwQIGYIEDMEiBkCxAwBYoYAMUOAmXkBjIFSF73FG84AAAAASUVORK5CYII="></p>
+<p><a name="02绘制-一个带有填充颜色的-矩形相关代码"></a>
+02.绘制 一个带有填充颜色的 矩形相关代码</p>
+<hr>
+<div class="codehilite"><pre>        <span class="kd">var</span> <span class="nx">myCanvas</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;myCanvas&quot;</span><span class="p">);</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">width</span><span class="o">=</span><span class="s2">&quot;500&quot;</span><span class="p">;</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">height</span><span class="o">=</span><span class="s2">&quot;300&quot;</span><span class="p">;</span>
+
+        <span class="kd">var</span> <span class="nx">cxt</span><span class="o">=</span><span class="nx">myCanvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">);</span>
+
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">fillStyle</span><span class="o">=</span><span class="s2">&quot;#f0f&quot;</span><span class="p">;</span>
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">fillRect</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
+</pre></div>
+
+
+<p>效果图 如下 <a href="demo02.html">查看案例</a></p>
+<p><img alt="" src="data:image/png;base64,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"></p>
+<p><a name="03画线"></a>
+03.画线</p>
+<hr>
+<div class="codehilite"><pre><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+        <span class="kd">var</span> <span class="nx">myCanvas</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;myCanvas&quot;</span><span class="p">);</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">width</span><span class="o">=</span><span class="s2">&quot;500&quot;</span><span class="p">;</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">height</span><span class="o">=</span><span class="s2">&quot;300&quot;</span><span class="p">;</span>
+
+        <span class="kd">var</span> <span class="nx">cxt</span><span class="o">=</span><span class="nx">myCanvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">);</span>
+        <span class="c1">//画三角形</span>
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">moveTo</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">50</span><span class="p">);</span>
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">200</span><span class="p">);</span>
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">50</span><span class="p">);</span>
+
+        <span class="c1">//画直线</span>
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">moveTo</span><span class="p">(</span><span class="mi">350</span><span class="p">,</span><span class="mi">50</span><span class="p">);</span>
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="mi">350</span><span class="p">,</span><span class="mi">200</span><span class="p">);</span>
+
+        <span class="c1">//定义画线样式</span>
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">strokeStyle</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">;</span>
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">lineWidth</span><span class="o">=</span><span class="s2">&quot;5&quot;</span><span class="p">;</span>
+
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">lineCap</span><span class="o">=</span><span class="s2">&quot;round&quot;</span><span class="p">;</span>
+
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">stroke</span><span class="p">();</span>
+</pre></div>
+
+
+<p>效果图 如下 <a href="demo03.html">查看案例</a></p>
+<p><img alt="" src="data:image/png;base64,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"></p>
+<p><a name="04画矩形"></a>
+04.画矩形</p>
+<hr>
+<div class="codehilite"><pre>&lt;script&gt;
+        var myCanvas=document.getElementById(&quot;myCanvas&quot;);
+        myCanvas.width=&quot;500&quot;;
+        myCanvas.height=&quot;300&quot;;
+
+        var cxt=myCanvas.getContext(&quot;2d&quot;);
+        //方法一
+
+        cxt.moveTo(100,50);
+        cxt.lineTo(300,50);
+        cxt.lineTo(300,200);
+        cxt.lineTo(100,200);
+        cxt.lineTo(100,50);
+        cxt.fill();
+        //cxt.stroke();
+
+        //方法二
+        // /cxt.strokeStyle=&quot;red&quot;;
+        cxt.fillStyle=&quot;red&quot;;
+        cxt.fillRect(0,0,300,40);
+        //cxt.strokeRect(0,0,300,40);
+
+    &lt;/script&gt;
+</pre></div>
+
+
+<p>效果图 如下 <a href="demo04.html">查看案例</a></p>
+<p><img alt="" src="data:image/png;base64,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"></p>
+<p><a name="05路径的开始与关闭"></a>
+05.路径的开始与关闭</p>
+<hr>
+<div class="codehilite"><pre>    <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+        <span class="kd">var</span> <span class="nx">myCanvas</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;myCanvas&quot;</span><span class="p">);</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">width</span><span class="o">=</span><span class="s2">&quot;500&quot;</span><span class="p">;</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">height</span><span class="o">=</span><span class="s2">&quot;300&quot;</span><span class="p">;</span>
+
+        <span class="kd">var</span> <span class="nx">cxt</span><span class="o">=</span><span class="nx">myCanvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">);</span>
+        <span class="c1">//方法一</span>
+
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">moveTo</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">50</span><span class="p">);</span>
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span><span class="mi">50</span><span class="p">);</span>
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span><span class="mi">200</span><span class="p">);</span>
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">);</span>
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">50</span><span class="p">);</span>
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">fill</span><span class="p">();</span>
+
+        <span class="c1">//cxt.stroke();</span>
+
+        <span class="c1">//方法二</span>
+        <span class="c1">//cxt.strokeStyle=&quot;red&quot;;</span>
+        <span class="c1">//cxt.strokeRect(0,0,300,40);</span>
+
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">fillStyle</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">;</span>
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">fillRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">300</span><span class="p">,</span><span class="mi">40</span><span class="p">);</span>
+</pre></div>
+
+
+<p>效果图 如下 <a href="demo05.html">查看案例</a></p>
+<p><img alt="" src="data:image/png;base64,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"></p>
+<p><a name="06canvas-画圆-画弧"></a>
+06.canvas 画圆 画弧</p>
+<hr>
+<div class="codehilite"><pre><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+        <span class="kd">var</span> <span class="nx">myCanvas</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;myCanvas&quot;</span><span class="p">);</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">width</span><span class="o">=</span><span class="s2">&quot;500&quot;</span><span class="p">;</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">height</span><span class="o">=</span><span class="s2">&quot;300&quot;</span><span class="p">;</span>
+
+        <span class="kd">var</span> <span class="nx">cxt</span><span class="o">=</span><span class="nx">myCanvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">);</span>
+        <span class="c1">//空心圆</span>
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">()</span>
+            <span class="nx">cxt</span><span class="p">.</span><span class="nx">arc</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span><span class="mi">150</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="o">*</span><span class="mi">2</span><span class="p">);</span>
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">closePath</span><span class="p">();</span>
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">stroke</span><span class="p">();</span>
+
+        <span class="c1">//空心圆</span>
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">()</span>
+            <span class="nx">cxt</span><span class="p">.</span><span class="nx">arc</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span><span class="mi">150</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="o">*</span><span class="mi">2</span><span class="p">);</span>
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">closePath</span><span class="p">();</span>
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">fill</span><span class="p">();</span>
+
+        <span class="c1">//弧度</span>
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">()</span>
+            <span class="nx">cxt</span><span class="p">.</span><span class="nx">arc</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span><span class="mi">150</span><span class="p">,</span><span class="mi">130</span><span class="p">,</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="o">*</span><span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="p">,</span><span class="kc">true</span><span class="p">);</span>
+            <span class="nx">cxt</span><span class="p">.</span><span class="nx">stroke</span><span class="p">();</span>
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">closePath</span><span class="p">();</span>
+</pre></div>
+
+
+<p>效果图 如下 <a href="demo06.html">查看案例</a></p>
+<p><img alt="" src="data:image/png;base64,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"></p>
+<p><a name="07canvas-添加图片--添加文字"></a>
+07.canvas 添加图片  添加文字</p>
+<hr>
+<div class="codehilite"><pre><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+        <span class="kd">var</span> <span class="nx">myCanvas</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;myCanvas&quot;</span><span class="p">);</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">width</span><span class="o">=</span><span class="s2">&quot;500&quot;</span><span class="p">;</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">height</span><span class="o">=</span><span class="s2">&quot;300&quot;</span><span class="p">;</span>
+
+        <span class="kd">var</span> <span class="nx">cxt</span><span class="o">=</span><span class="nx">myCanvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">);</span>
+
+        <span class="c1">//添加图片</span>
+        <span class="kd">var</span> <span class="nx">img</span><span class="o">=</span><span class="k">new</span> <span class="nx">Image</span><span class="p">();</span>
+        <span class="nx">img</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="s2">&quot;images/meizi.jpg&quot;</span><span class="p">;</span>
+        <span class="nx">img</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="kd">function</span><span class="p">(){</span>
+            <span class="nx">cxt</span><span class="p">.</span><span class="nx">drawImage</span><span class="p">(</span><span class="nx">img</span><span class="p">,</span><span class="mi">85</span><span class="p">,</span><span class="mi">40</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">//添加文字</span>
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">font</span><span class="o">=</span><span class="s2">&quot;30px Arial&quot;</span><span class="p">;</span>
+
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">fillStyle</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">;</span>
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">fillText</span><span class="p">(</span><span class="s2">&quot;我女朋友&quot;</span><span class="p">,</span><span class="mi">380</span><span class="p">,</span><span class="mi">290</span><span class="p">);</span>
+
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">strokeStyle</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">;</span>
+        <span class="nx">cxt</span><span class="p">.</span><span class="nx">strokeText</span><span class="p">(</span><span class="s2">&quot;我女朋友&quot;</span><span class="p">,</span><span class="mi">380</span><span class="p">,</span><span class="mi">290</span><span class="p">);</span>
+</pre></div>
+
+
+<p>效果图 如下 <a href="demo07.html">查看案例</a></p>
+<p><img alt="" src="http://www.shitu91.com/cms/canvasSub/images/demo07.jpg"></p>
+<p><a name="08canvas-橡皮擦--物体运动本质是图形不断的擦除与绘制"></a>
+08.canvas 橡皮擦  物体运动(本质是图形不断的擦除与绘制)</p>
+<hr>
+<div class="codehilite"><pre><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+        <span class="kd">var</span> <span class="nx">myCanvas</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;myCanvas&quot;</span><span class="p">);</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">width</span><span class="o">=</span><span class="s2">&quot;500&quot;</span><span class="p">;</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">height</span><span class="o">=</span><span class="s2">&quot;300&quot;</span><span class="p">;</span>
+
+        <span class="kd">var</span> <span class="nx">cxt</span><span class="o">=</span><span class="nx">myCanvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">);</span>
+
+        <span class="c1">//圆</span>
+        <span class="kd">var</span> <span class="nx">x</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="nx">y</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">a</span><span class="o">=</span><span class="mi">490</span><span class="p">,</span><span class="nx">b</span><span class="o">=</span><span class="mi">290</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">duration</span><span class="o">=</span><span class="mi">2000</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">cishu</span><span class="o">=</span><span class="mi">2000</span><span class="o">/</span><span class="mi">30</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">xstep</span><span class="o">=</span><span class="p">(</span><span class="nx">a</span><span class="o">-</span><span class="nx">x</span><span class="p">)</span><span class="o">/</span><span class="nx">cishu</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">ystep</span><span class="o">=</span><span class="p">(</span><span class="nx">b</span><span class="o">-</span><span class="nx">y</span><span class="p">)</span><span class="o">/</span><span class="nx">cishu</span><span class="p">;</span>
+
+
+        <span class="kd">function</span> <span class="nx">huayuan</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">){</span>
+            <span class="nx">cxt</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">();</span>
+            <span class="nx">cxt</span><span class="p">.</span><span class="nx">arc</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="o">*</span><span class="mi">2</span><span class="p">);</span>
+            <span class="nx">cxt</span><span class="p">.</span><span class="nx">fillStyle</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">;</span>
+            <span class="nx">cxt</span><span class="p">.</span><span class="nx">fill</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="nx">huayuan</span><span class="p">();</span>
+        <span class="kd">var</span> <span class="nx">timer</span><span class="o">=</span><span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+             <span class="c1">//橡皮擦</span>
+            <span class="nx">cxt</span><span class="p">.</span><span class="nx">clearRect</span><span class="p">(</span><span class="nx">x</span><span class="o">-</span><span class="mi">11</span><span class="p">,</span><span class="nx">y</span><span class="o">-</span><span class="mi">11</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">22</span><span class="p">);</span>
+
+            <span class="nx">x</span><span class="o">+=</span><span class="nx">xstep</span><span class="p">;</span>
+            <span class="nx">y</span><span class="o">+=</span><span class="nx">ystep</span><span class="p">;</span>
+
+            <span class="k">if</span><span class="p">(</span><span class="nx">x</span><span class="o">&gt;=</span><span class="nx">a</span><span class="p">){</span>
+                <span class="nx">x</span><span class="o">=</span><span class="nx">a</span><span class="p">;</span>
+                <span class="nx">y</span><span class="o">=</span><span class="nx">b</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="nx">huayuan</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">);</span>
+
+        <span class="p">},</span><span class="mi">30</span><span class="p">);</span>
+</pre></div>
+
+
+<p>效果图 如下 <a href="demo08.html">查看案例</a></p>
+<p><img alt="" src="http://www.shitu91.com/cms/canvasSub/images/demo08.gif"></p>
+<p><a name="09-canvas-鼠标画笔"></a>
+09. canvas 鼠标画笔 </p>
+<hr>
+<div class="codehilite"><pre><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+        <span class="kd">var</span> <span class="nx">myCanvas</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;myCanvas&quot;</span><span class="p">);</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">width</span><span class="o">=</span><span class="s2">&quot;500&quot;</span><span class="p">;</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">height</span><span class="o">=</span><span class="s2">&quot;300&quot;</span><span class="p">;</span>
+
+        <span class="kd">var</span> <span class="nx">cxt</span><span class="o">=</span><span class="nx">myCanvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">);</span>
+
+        <span class="kd">var</span> <span class="nx">canvaL</span><span class="o">=</span><span class="nx">myCanvas</span><span class="p">.</span><span class="nx">offsetLeft</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">canvaT</span><span class="o">=</span><span class="nx">myCanvas</span><span class="p">.</span><span class="nx">offsetTop</span><span class="p">;</span>
+
+
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">onmousedown</span><span class="o">=</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+            <span class="kd">var</span> <span class="nx">ev</span><span class="o">=</span><span class="nx">e</span><span class="o">||</span><span class="nb">window</span><span class="p">.</span><span class="nx">event</span><span class="p">;</span>
+            <span class="kd">var</span> <span class="nx">left</span><span class="o">=</span><span class="nx">ev</span><span class="p">.</span><span class="nx">clientX</span><span class="p">;</span>
+            <span class="kd">var</span> <span class="nx">top</span><span class="o">=</span><span class="nx">ev</span><span class="p">.</span><span class="nx">clientY</span><span class="p">;</span>
+            <span class="kd">var</span> <span class="nx">x</span><span class="o">=</span><span class="nx">left</span><span class="o">-</span><span class="nx">canvaL</span><span class="p">;</span>
+            <span class="kd">var</span> <span class="nx">y</span><span class="o">=</span><span class="nx">top</span><span class="o">-</span><span class="nx">canvaT</span><span class="p">;</span>
+
+            <span class="nx">cxt</span><span class="p">.</span><span class="nx">moveTo</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">);</span>
+            <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">onmousemove</span><span class="o">=</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+                <span class="kd">var</span> <span class="nx">ev</span><span class="o">=</span><span class="nx">e</span><span class="o">||</span><span class="nb">window</span><span class="p">.</span><span class="nx">event</span><span class="p">;</span>
+                <span class="kd">var</span> <span class="nx">left</span><span class="o">=</span><span class="nx">ev</span><span class="p">.</span><span class="nx">clientX</span><span class="p">;</span>
+                <span class="kd">var</span> <span class="nx">top</span><span class="o">=</span><span class="nx">ev</span><span class="p">.</span><span class="nx">clientY</span><span class="p">;</span>
+                <span class="kd">var</span> <span class="nx">x</span><span class="o">=</span><span class="nx">left</span><span class="o">-</span><span class="nx">canvaL</span><span class="p">;</span>
+                <span class="kd">var</span> <span class="nx">y</span><span class="o">=</span><span class="nx">top</span><span class="o">-</span><span class="nx">canvaT</span><span class="p">;</span>
+                <span class="nx">cxt</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">);</span>
+
+                <span class="nx">cxt</span><span class="p">.</span><span class="nx">stroke</span><span class="p">();</span>
+
+
+            <span class="p">}</span>
+
+            <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">onmouseup</span><span class="o">=</span><span class="kd">function</span><span class="p">(){</span>
+                <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">onmouseup</span><span class="o">=</span><span class="kc">null</span><span class="p">;</span>
+                <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">onmousemove</span><span class="o">=</span><span class="kc">null</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">onmouseout</span><span class="o">=</span><span class="kd">function</span><span class="p">(){</span>
+                <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">onmouseup</span><span class="o">=</span><span class="kc">null</span><span class="p">;</span>
+                <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">onmousemove</span><span class="o">=</span><span class="kc">null</span><span class="p">;</span>
+                <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">onmouseout</span><span class="o">=</span><span class="kc">null</span><span class="p">;</span>
+            <span class="p">}</span>
+
+
+        <span class="p">}</span>
+</pre></div>
+
+
+<p>效果图 如下  <a href="demo09.html">查看案例</a></p>
+<p><img alt="" src="http://www.shitu91.com/cms/canvasSub/images/demo09.gif"></p>
+<p><a name="10canvas-渐变线性渐变"></a>
+10.canvas 渐变线性渐变</p>
+<hr>
+<div class="codehilite"><pre><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+        <span class="kd">var</span> <span class="nx">myCanvas</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;myCanvas&quot;</span><span class="p">);</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">width</span><span class="o">=</span><span class="s2">&quot;500&quot;</span><span class="p">;</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">height</span><span class="o">=</span><span class="s2">&quot;300&quot;</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">ctx</span><span class="o">=</span><span class="nx">myCanvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">);</span>
+
+        <span class="c1">//创建线性渐变对象</span>
+        <span class="kd">var</span> <span class="nx">lg</span><span class="o">=</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">createLinearGradient</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">210</span><span class="p">,</span><span class="mi">110</span><span class="p">);</span>
+        <span class="nx">lg</span><span class="p">.</span><span class="nx">addColorStop</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;red&quot;</span><span class="p">);</span>
+        <span class="nx">lg</span><span class="p">.</span><span class="nx">addColorStop</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;blue&quot;</span><span class="p">);</span>
+
+        <span class="c1">//带线性渐变矩形</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillStyle</span><span class="o">=</span><span class="nx">lg</span><span class="p">;</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillRect</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
+
+        <span class="c1">//带线性渐变圆</span>
+        <span class="kd">var</span> <span class="nx">lg1</span><span class="o">=</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">createLinearGradient</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span><span class="mi">130</span><span class="p">,</span><span class="mi">140</span><span class="p">,</span><span class="mi">200</span><span class="p">);</span>
+        <span class="nx">lg1</span><span class="p">.</span><span class="nx">addColorStop</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;green&quot;</span><span class="p">);</span>
+        <span class="nx">lg1</span><span class="p">.</span><span class="nx">addColorStop</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;yellow&quot;</span><span class="p">);</span>
+
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">();</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">arc</span><span class="p">(</span><span class="mi">105</span><span class="p">,</span><span class="mi">160</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="o">*</span><span class="mi">2</span><span class="p">);</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillStyle</span><span class="o">=</span><span class="nx">lg1</span><span class="p">;</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">fill</span><span class="p">();</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">closePath</span><span class="p">();</span>
+
+    <span class="o">&lt;</span><span class="err">/script&gt;</span>
+</pre></div>
+
+
+<p>效果图 如下 <a href="demo10.html">查看案例</a></p>
+<p><img alt="" src="http://www.shitu91.com/cms/canvasSub/images/demo10.png"></p>
+<p><a name="11canvas-渐变之径向渐变"></a>
+11.canvas 渐变之径向渐变</p>
+<hr>
+<div class="codehilite"><pre><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+        <span class="kd">var</span> <span class="nx">myCanvas</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;myCanvas&quot;</span><span class="p">);</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">width</span><span class="o">=</span><span class="s2">&quot;500&quot;</span><span class="p">;</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">height</span><span class="o">=</span><span class="s2">&quot;300&quot;</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">ctx</span><span class="o">=</span><span class="nx">myCanvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">);</span>
+
+        <span class="c1">//创建径向渐变对象</span>
+        <span class="kd">var</span> <span class="nx">rg</span><span class="o">=</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">createRadialGradient</span><span class="p">(</span><span class="mi">110</span><span class="p">,</span><span class="mi">110</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">110</span><span class="p">,</span><span class="mi">110</span><span class="p">,</span><span class="mi">110</span><span class="p">);</span>
+
+        <span class="nx">rg</span><span class="p">.</span><span class="nx">addColorStop</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;#f00&quot;</span><span class="p">);</span>
+        <span class="nx">rg</span><span class="p">.</span><span class="nx">addColorStop</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="s2">&quot;rgb(238,182,231)&quot;</span><span class="p">);</span>
+        <span class="nx">rg</span><span class="p">.</span><span class="nx">addColorStop</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;blue&quot;</span><span class="p">);</span>
+
+        <span class="c1">//带径向渐变矩形</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillStyle</span><span class="o">=</span><span class="nx">rg</span><span class="p">;</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillRect</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">200</span><span class="p">);</span>
+
+        <span class="c1">//创建径向渐变的圆</span>
+
+        <span class="kd">var</span> <span class="nx">rg1</span><span class="o">=</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">createRadialGradient</span><span class="p">(</span><span class="mi">310</span><span class="p">,</span><span class="mi">61</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">310</span><span class="p">,</span><span class="mi">111</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
+        <span class="nx">rg1</span><span class="p">.</span><span class="nx">addColorStop</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;#fff&quot;</span><span class="p">);</span>
+        <span class="nx">rg1</span><span class="p">.</span><span class="nx">addColorStop</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;black&quot;</span><span class="p">);</span>
+
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">();</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">arc</span><span class="p">(</span><span class="mi">310</span><span class="p">,</span><span class="mi">111</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="o">*</span><span class="mi">2</span><span class="p">);</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillStyle</span><span class="o">=</span><span class="nx">rg1</span><span class="p">;</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">fill</span><span class="p">();</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">closePath</span><span class="p">();</span>
+
+    <span class="o">&lt;</span><span class="err">/script&gt;</span>
+</pre></div>
+
+
+<p>效果图 如下 <a href="demo11.html">查看案例</a></p>
+<p><img alt="" src="http://www.shitu91.com/cms/canvasSub/images/demo11.jpg"></p>
+<p><a name="12canvas-填充--图案"></a>
+12.canvas 填充--图案</p>
+<hr>
+<div class="codehilite"><pre><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+        <span class="kd">var</span> <span class="nx">myCanvas</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;myCanvas&quot;</span><span class="p">);</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">width</span><span class="o">=</span><span class="s2">&quot;500&quot;</span><span class="p">;</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">height</span><span class="o">=</span><span class="s2">&quot;300&quot;</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">ctx</span><span class="o">=</span><span class="nx">myCanvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">);</span>
+
+        <span class="kd">var</span> <span class="nx">img</span><span class="o">=</span><span class="k">new</span> <span class="nx">Image</span><span class="p">();</span>
+        <span class="nx">img</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="s2">&quot;images/flower.jpg&quot;</span><span class="p">;</span>
+
+        <span class="nx">img</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="kd">function</span><span class="p">(){</span>
+            <span class="kd">var</span> <span class="nx">tuan</span><span class="o">=</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">createPattern</span><span class="p">(</span><span class="nx">img</span><span class="p">,</span><span class="s2">&quot;repeat&quot;</span><span class="p">);</span>
+
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillStyle</span><span class="o">=</span><span class="nx">tuan</span><span class="p">;</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">500</span><span class="p">,</span><span class="mi">300</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="o">&lt;</span><span class="err">/script&gt;</span>
+</pre></div>
+
+
+<p>效果图如下:<a href="demo12.html">查看案例</a></p>
+<p><img alt="" src="http://www.shitu91.com/cms/canvasSub/images/demo12.png"></p>
+<p><a name="13canvas-图片-之深入谈"></a>
+13.canvas 图片 之深入谈</p>
+<hr>
+<div class="codehilite"><pre><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+        <span class="kd">var</span> <span class="nx">myCanvas</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;myCanvas&quot;</span><span class="p">);</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">width</span><span class="o">=</span><span class="s2">&quot;500&quot;</span><span class="p">;</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">height</span><span class="o">=</span><span class="s2">&quot;300&quot;</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">ctx</span><span class="o">=</span><span class="nx">myCanvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">);</span>
+
+        <span class="c1">//画图 女汉子</span>
+        <span class="kd">var</span> <span class="nx">nvhanziImg</span><span class="o">=</span><span class="k">new</span> <span class="nx">Image</span><span class="p">();</span>
+        <span class="nx">nvhanziImg</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="s2">&quot;images/nvhanzi.jpg&quot;</span><span class="p">;</span>
+        <span class="nx">nvhanziImg</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="kd">function</span><span class="p">(){</span>
+
+            <span class="c1">//ctx.drawImage(nvhanziImg,dx,dy,dw,dh);</span>
+
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">drawImage</span><span class="p">(</span><span class="nx">nvhanziImg</span><span class="p">,</span><span class="mi">225</span><span class="p">,</span><span class="mi">125</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">50</span><span class="p">);</span>
+        <span class="p">}</span>
+
+
+        <span class="c1">//2 画精灵图片</span>
+        <span class="c1">// source源  destination 目标地</span>
+        <span class="kd">var</span> <span class="nx">nvjingli</span><span class="o">=</span><span class="k">new</span> <span class="nx">Image</span><span class="p">();</span>
+        <span class="nx">nvjingli</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="s2">&quot;images/jinglingnvhai.jpg&quot;</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">nv2</span><span class="o">=</span><span class="p">{</span>
+                <span class="nx">x</span><span class="o">:</span><span class="mi">82</span><span class="p">,</span>
+                <span class="nx">y</span><span class="o">:</span><span class="mi">0</span><span class="p">,</span>
+                <span class="nx">w</span><span class="o">:</span><span class="mi">84</span><span class="p">,</span>
+                <span class="nx">h</span><span class="o">:</span><span class="mi">110</span>
+        <span class="p">};</span>
+
+
+        <span class="nx">nvjingli</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="kd">function</span><span class="p">(){</span>
+
+        <span class="c1">//语法 ctx.drawImage(nvjingli,s.x,s.y,s.w,s.h,d.x,d.y,d.w,d.h);</span>
+
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">drawImage</span><span class="p">(</span><span class="nx">nvjingli</span><span class="p">,</span><span class="nx">nv2</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span><span class="nx">nv2</span><span class="p">.</span><span class="nx">y</span><span class="p">,</span><span class="nx">nv2</span><span class="p">.</span><span class="nx">w</span><span class="p">,</span><span class="nx">nv2</span><span class="p">.</span><span class="nx">h</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nx">nv2</span><span class="p">.</span><span class="nx">w</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="nx">nv2</span><span class="p">.</span><span class="nx">h</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span>
+
+
+        <span class="p">}</span>
+
+        <span class="c1">//3.圣诞老人驾车</span>
+        <span class="kd">var</span> <span class="nx">shengdanP</span><span class="o">=</span><span class="p">[</span>
+            <span class="p">{</span>
+                    <span class="nx">x</span><span class="o">:</span><span class="mi">0</span><span class="p">,</span>
+                    <span class="nx">y</span><span class="o">:</span><span class="mi">0</span><span class="p">,</span>
+                    <span class="nx">w</span><span class="o">:</span><span class="mi">220</span><span class="p">,</span>
+                    <span class="nx">h</span><span class="o">:</span><span class="mi">80</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                    <span class="nx">x</span><span class="o">:</span><span class="mi">220</span><span class="p">,</span>
+                    <span class="nx">y</span><span class="o">:</span><span class="mi">0</span><span class="p">,</span>
+                    <span class="nx">w</span><span class="o">:</span><span class="mi">220</span><span class="p">,</span>
+                    <span class="nx">h</span><span class="o">:</span><span class="mi">80</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                    <span class="nx">x</span><span class="o">:</span><span class="mi">440</span><span class="p">,</span>
+                    <span class="nx">y</span><span class="o">:</span><span class="mi">0</span><span class="p">,</span>
+                    <span class="nx">w</span><span class="o">:</span><span class="mi">220</span><span class="p">,</span>
+                    <span class="nx">h</span><span class="o">:</span><span class="mi">80</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                    <span class="nx">x</span><span class="o">:</span><span class="mi">660</span><span class="p">,</span>
+                    <span class="nx">y</span><span class="o">:</span><span class="mi">0</span><span class="p">,</span>
+                    <span class="nx">w</span><span class="o">:</span><span class="mi">220</span><span class="p">,</span>
+                    <span class="nx">h</span><span class="o">:</span><span class="mi">80</span>
+            <span class="p">},</span>
+        <span class="p">];</span>
+        <span class="kd">var</span> <span class="nx">shengdanImg</span><span class="o">=</span><span class="k">new</span> <span class="nx">Image</span><span class="p">();</span>
+        <span class="nx">shengdanImg</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="s2">&quot;images/christmas.jpg&quot;</span><span class="p">;</span>
+
+        <span class="nx">shengdanImg</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="kd">function</span><span class="p">(){</span>
+
+            <span class="nx">setInterval</span><span class="p">(</span><span class="nx">pao</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
+        <span class="p">}</span>
+
+
+        <span class="kd">var</span> <span class="nx">index</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+        <span class="kd">function</span> <span class="nx">pao</span><span class="p">(){</span>
+            <span class="k">if</span><span class="p">(</span><span class="nx">index</span><span class="o">==</span><span class="nx">shengdanP</span><span class="p">.</span><span class="nx">length</span><span class="p">){</span>
+                <span class="nx">index</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="kd">var</span> <span class="nx">sx</span><span class="o">=</span><span class="nx">shengdanP</span><span class="p">[</span><span class="nx">index</span><span class="p">].</span><span class="nx">x</span><span class="p">;</span>
+            <span class="kd">var</span> <span class="nx">sy</span><span class="o">=</span><span class="nx">shengdanP</span><span class="p">[</span><span class="nx">index</span><span class="p">].</span><span class="nx">y</span><span class="p">;</span>
+            <span class="kd">var</span> <span class="nx">sw</span><span class="o">=</span><span class="nx">shengdanP</span><span class="p">[</span><span class="nx">index</span><span class="p">].</span><span class="nx">w</span><span class="p">;</span>
+            <span class="kd">var</span> <span class="nx">sh</span><span class="o">=</span><span class="nx">shengdanP</span><span class="p">[</span><span class="nx">index</span><span class="p">].</span><span class="nx">h</span><span class="p">;</span>
+
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">drawImage</span><span class="p">(</span><span class="nx">shengdanImg</span><span class="p">,</span><span class="nx">sx</span><span class="p">,</span><span class="nx">sy</span><span class="p">,</span><span class="nx">sw</span><span class="p">,</span><span class="nx">sh</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">125</span><span class="p">,</span><span class="nx">sw</span><span class="o">*</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="nx">sh</span><span class="o">*</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">);</span>
+            <span class="nx">index</span><span class="o">++</span><span class="p">;</span>
+
+        <span class="p">}</span>
+
+    <span class="o">&lt;</span><span class="err">/script&gt;</span>
+</pre></div>
+
+
+<p>效果图 如下 <a href="demo13.html">查看案例</a></p>
+<p><img alt="" src="http://www.shitu91.com/cms/canvasSub/images/demo13.gif"></p>
+<p><a name="14canvas-save--restore"></a>
+14.canvas save &amp;&amp; restore</p>
+<hr>
+<blockquote>
+<p>保存或者恢复 canvas 里的状态 (填充，描边，渐变，坐标位移,裁切)</p>
+</blockquote>
+<div class="codehilite"><pre><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+
+        <span class="kd">var</span> <span class="nx">myCanvas</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;myCanvas&quot;</span><span class="p">);</span>
+
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">width</span><span class="o">=</span><span class="s2">&quot;500&quot;</span><span class="p">;</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">height</span><span class="o">=</span><span class="s2">&quot;300&quot;</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">ctx</span><span class="o">=</span><span class="nx">myCanvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">);</span>
+
+        <span class="kd">var</span> <span class="nx">lg</span><span class="o">=</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">createLinearGradient</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">250</span><span class="p">,</span><span class="mi">200</span><span class="p">);</span>
+        <span class="nx">lg</span><span class="p">.</span><span class="nx">addColorStop</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;red&quot;</span><span class="p">);</span>
+        <span class="nx">lg</span><span class="p">.</span><span class="nx">addColorStop</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;blue&quot;</span><span class="p">);</span>
+
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">strokeStyle</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">;</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">strokeRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">save</span><span class="p">();</span>
+
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillStyle</span><span class="o">=</span><span class="nx">lg</span><span class="p">;</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">strokeStyle</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">;</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">strokeRect</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">save</span><span class="p">();</span>
+
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">restore</span><span class="p">();</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">restore</span><span class="p">();</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">strokeRect</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillRect</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
+
+    <span class="o">&lt;</span><span class="err">/script&gt;</span>
+</pre></div>
+
+
+<p>效果图如下 你是否能理解下面的绘制呢？  <a href="demo14.html">查看案例</a></p>
+<p><img alt="" src="data:image/png;base64,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0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwBg0XRMEwP0UwAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAOUgAA4CAFAAAO+ukCICIiIh35ka8FAAC4QwEAgIMUAAA4SAEAgIMUAAA4SAEAgIMUAAA4SAEAgIMUAAA4SAEAgHPe3v4CJY7aXJt16Y4AAAAASUVORK5CYII=">;</p>
+<p><a name="15canvas-坐标操作--移动translate-旋转rotate-缩放scale"></a>
+15.canvas 坐标操作  移动(translate) 旋转(rotate) 缩放(scale)</p>
+<hr>
+<blockquote>
+<p>为了不影响canvas里其它的对象，我们在进行坐标变换前,先保存一下canvas状态
+做完变换操作以后恢复原状态</p>
+</blockquote>
+<div class="codehilite"><pre>   <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+
+        <span class="kd">var</span> <span class="nx">drawRect</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;drawRect&quot;</span><span class="p">);</span>
+
+
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">width</span><span class="o">=</span><span class="s2">&quot;500&quot;</span><span class="p">;</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">height</span><span class="o">=</span><span class="s2">&quot;300&quot;</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">ctx</span><span class="o">=</span><span class="nx">myCanvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">);</span>
+
+
+        <span class="c1">//绘制球</span>
+        <span class="kd">var</span> <span class="nx">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="nx">y</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+        <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">save</span><span class="p">();</span>
+
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">clearRect</span><span class="p">(</span><span class="nx">x</span><span class="o">-</span><span class="mi">11</span><span class="p">,</span><span class="nx">y</span><span class="o">-</span><span class="mi">11</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">22</span><span class="p">);</span>
+
+            <span class="nx">x</span><span class="o">+=</span><span class="mi">5</span><span class="p">;</span>
+            <span class="nx">y</span><span class="o">+=</span><span class="mi">5</span><span class="p">;</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">translate</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">);</span>
+
+
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">();</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">arc</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="p">,</span><span class="kc">false</span><span class="p">);</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">stroke</span><span class="p">();</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">closePath</span><span class="p">();</span>
+
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">restore</span><span class="p">();</span>
+
+        <span class="p">},</span><span class="mi">100</span><span class="p">);</span>
+
+    <span class="o">&lt;</span><span class="err">/script&gt;</span>
+</pre></div>
+
+
+<p>效果图如下 <a href="demo15.html">查看案例</a></p>
+<p><img alt="" src="data:image/gif;base64,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"></p>
+<p><a name="16canvas-图形组合与混合-图片保存-裁剪-阴影-像素操作-事件操作"></a></p>
+<p><a name="16像素操作"></a>
+16.像素操作</p>
+<hr>
+<div class="codehilite"><pre>    <span class="nt">&lt;canvas</span> <span class="na">id=</span><span class="s">&quot;myCanvas&quot;</span> <span class="na">style=</span><span class="s">&quot;border:1px solid #ddd;display:block;margin:auto&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/canvas&gt;</span>
+    <span class="nt">&lt;canvas</span> <span class="na">id=</span><span class="s">&quot;myCanvas2&quot;</span> <span class="na">style=</span><span class="s">&quot;border:1px solid red;display:block;margin:auto&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/canvas&gt;</span>
+</pre></div>
+
+
+<div class="codehilite"><pre> <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+
+        <span class="kd">var</span> <span class="nx">myCanvas</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;myCanvas&quot;</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">myCanvas2</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;myCanvas2&quot;</span><span class="p">);</span>
+
+        <span class="nx">myCanvas2</span><span class="p">.</span><span class="nx">width</span><span class="o">=</span><span class="nx">myCanvas</span><span class="p">.</span><span class="nx">width</span><span class="o">=</span><span class="s2">&quot;500&quot;</span><span class="p">;</span>
+        <span class="nx">myCanvas2</span><span class="p">.</span><span class="nx">height</span><span class="o">=</span><span class="nx">myCanvas</span><span class="p">.</span><span class="nx">height</span><span class="o">=</span><span class="s2">&quot;300&quot;</span><span class="p">;</span>
+
+        <span class="kd">var</span> <span class="nx">ctx</span><span class="o">=</span><span class="nx">myCanvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">ctx2</span><span class="o">=</span><span class="nx">myCanvas2</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">);</span>
+
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillRect</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">();</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">arc</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="o">*</span><span class="mi">2</span><span class="p">);</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">closePath</span><span class="p">();</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillStyle</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">;</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">fill</span><span class="p">();</span>
+
+        <span class="kd">var</span> <span class="nx">imgData</span><span class="o">=</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">getImageData</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">500</span><span class="p">,</span><span class="mi">300</span><span class="p">);</span>
+        <span class="nx">ctx2</span><span class="p">.</span><span class="nx">putImageData</span><span class="p">(</span><span class="nx">imgData</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+
+    <span class="o">&lt;</span><span class="err">/script&gt;</span>
+</pre></div>
+
+
+<p>效果图如下 <a href="demo16.html">查看案例</a></p>
+<p><img alt="" src="http://www.shitu91.com/cms/canvasSub/images/demo17.png"> </p>
+<p><a name="16canvas像素操作补充"></a>
+16.canvas像素操作_补充</p>
+<hr>
+<div class="codehilite"><pre>    <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">&quot;width:300px;margin:auto&quot;</span><span class="nt">&gt;</span>
+        原图
+        <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;images/twodog.jpg&quot;</span> <span class="na">alt=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
+        canvas处理后
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;canvas</span> <span class="na">id=</span><span class="s">&quot;myCanvas&quot;</span> <span class="na">style=</span><span class="s">&quot;border:1px solid #ddd;display:block;margin:auto&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/canvas&gt;</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+        <span class="kd">var</span> <span class="nx">CANVAS_WIDTH</span><span class="o">=</span><span class="mi">300</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">CANVAS_HEIGHT</span><span class="o">=</span><span class="mi">200</span><span class="p">;</span>
+
+        <span class="kd">var</span> <span class="nx">myCanvas</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;myCanvas&quot;</span><span class="p">);</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">width</span><span class="o">=</span><span class="nx">CANVAS_WIDTH</span><span class="p">;</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">height</span><span class="o">=</span><span class="nx">CANVAS_HEIGHT</span><span class="p">;</span>
+
+
+        <span class="kd">var</span> <span class="nx">ctx</span><span class="o">=</span><span class="nx">myCanvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">);</span>
+
+        <span class="kd">var</span> <span class="nx">img</span><span class="o">=</span><span class="k">new</span> <span class="nx">Image</span><span class="p">();</span>
+        <span class="nx">img</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="s2">&quot;images/twodog.jpg&quot;</span><span class="p">;</span>
+        <span class="nx">img</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="kd">function</span><span class="p">(){</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">drawImage</span><span class="p">(</span><span class="nx">img</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nx">CANVAS_WIDTH</span><span class="p">,</span><span class="nx">CANVAS_HEIGHT</span><span class="p">);</span>
+
+
+            <span class="kd">var</span> <span class="nx">imgData</span><span class="o">=</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">getImageData</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nx">CANVAS_WIDTH</span><span class="p">,</span><span class="nx">CANVAS_HEIGHT</span><span class="p">);</span>
+            <span class="kd">var</span> <span class="nx">pixcelNums</span><span class="o">=</span><span class="nx">CANVAS_WIDTH</span><span class="o">*</span><span class="nx">CANVAS_HEIGHT</span><span class="p">;</span>
+            <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">pixcelNums</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+                <span class="nx">imgData</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="o">*</span><span class="mi">4</span><span class="o">+</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+                <span class="cm">/*imgData.data[i*4+1]=0;</span>
+<span class="cm">                imgData.data[i*4+2]=0;</span>
+<span class="cm">                imgData.data[i*4+3]=0;*/</span>
+            <span class="p">}</span>
+
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">putImageData</span><span class="p">(</span><span class="nx">imgData</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+        <span class="p">}</span>
+
+    <span class="o">&lt;</span><span class="err">/script&gt;</span>
+</pre></div>
+
+
+<p>效果图如下: <a href="demo16_02.html">查看案例</a></p>
+<p><img alt="" src="http://www.shitu91.com/cms/canvasSub/images/demo17_2.jpg"></p>
+<p><a name="17canvas-阴影"></a>
+17.canvas 阴影</p>
+<hr>
+<table>
+<thead>
+<tr>
+<th>说明</th>
+<th align="center">属性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>阴影偏移</td>
+<td align="center">shadowOffsetX,shadowOffsetY</td>
+</tr>
+<tr>
+<td>阴影颜色</td>
+<td align="center">shadowColor</td>
+</tr>
+<tr>
+<td>阴影模糊</td>
+<td align="center">shadowBlur</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;UTF-8&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>canvas 阴影  <span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;style&gt;</span>
+         <span class="nt">canvas</span><span class="p">{</span><span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span> <span class="m">0px</span> <span class="m">0px</span> <span class="m">10px</span> <span class="m">#f00</span><span class="p">;</span> <span class="p">}</span> 
+    <span class="nt">&lt;/style&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;canvas</span> <span class="na">id=</span><span class="s">&quot;myCanvas&quot;</span> <span class="na">style=</span><span class="s">&quot;border:1px solid #ddd;display:block;margin:auto&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/canvas&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+        <span class="kd">var</span> <span class="nx">CANVAS_WIDTH</span><span class="o">=</span><span class="mi">300</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">CANVAS_HEIGHT</span><span class="o">=</span><span class="mi">200</span><span class="p">;</span>
+
+        <span class="kd">var</span> <span class="nx">myCanvas</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;myCanvas&quot;</span><span class="p">);</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">width</span><span class="o">=</span><span class="nx">CANVAS_WIDTH</span><span class="p">;</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">height</span><span class="o">=</span><span class="nx">CANVAS_HEIGHT</span><span class="p">;</span>
+
+        <span class="kd">var</span> <span class="nx">ctx</span><span class="o">=</span><span class="nx">myCanvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">);</span>
+
+        <span class="kd">var</span> <span class="nx">img</span><span class="o">=</span><span class="k">new</span> <span class="nx">Image</span><span class="p">();</span>
+        <span class="nx">img</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="s2">&quot;images/twodog.jpg&quot;</span><span class="p">;</span>
+        <span class="nx">img</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="kd">function</span><span class="p">(){</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">shadowColor</span><span class="o">=</span><span class="s2">&quot;#222&quot;</span><span class="p">;</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">shadowBlur</span><span class="o">=</span><span class="s2">&quot;10&quot;</span><span class="p">;</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">shadowOffsetX</span><span class="o">=</span><span class="s2">&quot;5&quot;</span><span class="p">;</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">shadowOffsetY</span><span class="o">=</span><span class="s2">&quot;5&quot;</span><span class="p">;</span>
+
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">drawImage</span><span class="p">(</span><span class="nx">img</span><span class="p">,(</span><span class="nx">CANVAS_WIDTH</span><span class="o">-</span><span class="mi">200</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,(</span><span class="nx">CANVAS_HEIGHT</span><span class="o">-</span><span class="mi">100</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
+        <span class="p">}</span>
+
+    <span class="o">&lt;</span><span class="err">/script&gt;</span>
+</pre></div>
+
+
+<p>效果图如下 <a href="demo17.html">查看案例</a></p>
+<p><img alt="" src="http://www.shitu91.com/cms/canvasSub/images/demo18.png">;</p>
+<p><a name="18canvas-裁剪"></a>
+18.canvas 裁剪 </p>
+<hr>
+<blockquote>
+<p>设置好裁剪路径  之后绘制的图形 只能显示裁剪路径里面的</p>
+</blockquote>
+<div class="codehilite"><pre><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+        <span class="kd">var</span> <span class="nx">CANVAS_WIDTH</span><span class="o">=</span><span class="mi">300</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">CANVAS_HEIGHT</span><span class="o">=</span><span class="mi">200</span><span class="p">;</span>
+
+        <span class="kd">var</span> <span class="nx">myCanvas</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;myCanvas&quot;</span><span class="p">);</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">width</span><span class="o">=</span><span class="nx">CANVAS_WIDTH</span><span class="p">;</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">height</span><span class="o">=</span><span class="nx">CANVAS_HEIGHT</span><span class="p">;</span>
+
+        <span class="kd">var</span> <span class="nx">ctx</span><span class="o">=</span><span class="nx">myCanvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">);</span>
+
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">();</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">arc</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="p">);</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">closePath</span><span class="p">();</span>
+
+        <span class="kd">var</span> <span class="nx">guniang</span><span class="o">=</span><span class="k">new</span> <span class="nx">Image</span><span class="p">();</span>
+        <span class="nx">guniang</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="s2">&quot;images/guniang.jpg&quot;</span><span class="p">;</span>
+        <span class="nx">guniang</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="kd">function</span><span class="p">(){</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">save</span><span class="p">();</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">clip</span><span class="p">();</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">drawImage</span><span class="p">(</span><span class="nx">guniang</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">200</span><span class="p">);</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">restore</span><span class="p">();</span>
+
+        <span class="p">}</span>
+
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillText</span><span class="p">(</span><span class="s2">&quot;女朋友&quot;</span><span class="p">,</span><span class="mi">250</span><span class="p">,</span><span class="mi">150</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">50</span><span class="p">);</span>
+
+    <span class="o">&lt;</span><span class="err">/script&gt;</span>
+</pre></div>
+
+
+<p>效果图如下 <a href="demo18.html">查看案例</a></p>
+<p><img alt="" src="http://www.shitu91.com/cms/canvasSub/images/demo19.png"></p>
+<p><a name="19canvas-图片保存"></a>
+19.canvas 图片保存</p>
+<hr>
+<div class="codehilite"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;UTF-8&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>canvas 图片保存  <span class="nt">&lt;/title&gt;</span>
+
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">&quot;width:900px;text-align: center;margin:0 auto;&quot;</span><span class="nt">&gt;</span>
+        图片
+        <span class="nt">&lt;img</span> <span class="na">id=</span><span class="s">&quot;tupian&quot;</span> <span class="na">src=</span><span class="s">&quot;&quot;</span> <span class="na">alt=</span><span class="s">&quot;图片暂时没有&quot;</span> <span class="na">style=</span><span class="s">&quot;vertical-align: middle&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;br/&gt;</span>
+        canvas
+        <span class="nt">&lt;canvas</span> <span class="na">style=</span><span class="s">&quot;vertical-align: middle&quot;</span> <span class="na">id=</span><span class="s">&quot;myCanvas&quot;</span> <span class="na">style=</span><span class="s">&quot;border:1px solid #ddd;margin:auto&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/canvas&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+
+
+<div class="codehilite"><pre> <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+        <span class="kd">var</span> <span class="nx">CANVAS_WIDTH</span><span class="o">=</span><span class="mi">300</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">CANVAS_HEIGHT</span><span class="o">=</span><span class="mi">200</span><span class="p">;</span>
+
+        <span class="kd">var</span> <span class="nx">myCanvas</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;myCanvas&quot;</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">tupian</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;tupian&quot;</span><span class="p">);</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">width</span><span class="o">=</span><span class="nx">CANVAS_WIDTH</span><span class="p">;</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">height</span><span class="o">=</span><span class="nx">CANVAS_HEIGHT</span><span class="p">;</span>
+
+        <span class="kd">var</span> <span class="nx">ctx</span><span class="o">=</span><span class="nx">myCanvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">);</span>
+
+        <span class="kd">var</span> <span class="nx">guniang</span><span class="o">=</span><span class="k">new</span> <span class="nx">Image</span><span class="p">();</span>
+        <span class="nx">guniang</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="s2">&quot;images/huaituzi.jpg&quot;</span><span class="p">;</span>
+        <span class="nx">guniang</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="kd">function</span><span class="p">(){</span>
+
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">drawImage</span><span class="p">(</span><span class="nx">guniang</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">119</span><span class="p">);</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">moveTo</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="nx">CANVAS_WIDTH</span><span class="p">,</span><span class="nx">CANVAS_HEIGHT</span><span class="p">);</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">stroke</span><span class="p">();</span>
+
+            <span class="kd">var</span> <span class="nx">dataStr</span><span class="o">=</span><span class="nx">myCanvas</span><span class="p">.</span><span class="nx">toDataURL</span><span class="p">();</span>
+            <span class="nx">tupian</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="nx">dataStr</span><span class="p">;</span>
+            <span class="c1">//location.href=dataStr;</span>
+        <span class="p">}</span>
+    <span class="o">&lt;</span><span class="err">/script&gt;</span>
+</pre></div>
+
+
+<p>效果图如下 <a href="demo19.html">查看案例</a></p>
+<p><img alt="" src="http://www.shitu91.com/cms/canvasSub/images/demo20.png"></p>
+<p><a name="20图形组合"></a>
+20.图形组合</p>
+<hr>
+<p>调节透明度
+globalAlpha</p>
+<p>单词  destionation source</p>
+<p>globalCompositeOperation  图形组合操作</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>source-over</td>
+<td align="center">目标图像上显示源图像。</td>
+</tr>
+<tr>
+<td>destination-over</td>
+<td align="center">源图像上方显示目标图像。</td>
+</tr>
+<tr>
+<td>source-atop</td>
+<td align="center">目标图像顶部显示源图像。源图像位于目标图像之外的部分是不可见的</td>
+</tr>
+<tr>
+<td>destination-atop</td>
+<td align="center">源图像顶部显示目标图像。源图像之外的目标图像部分不会被显示。</td>
+</tr>
+<tr>
+<td>source-in</td>
+<td align="center">在目标图像中显示源图像。只有目标图像内的源图像部分会显示，目标图像是透明的。</td>
+</tr>
+<tr>
+<td>destination-in</td>
+<td align="center">在源图像中显示目标图像。只有源图像内的目标图像部分会被显示，源图像是透明的。</td>
+</tr>
+<tr>
+<td>source-out</td>
+<td align="center">在目标图像之外显示源图像。只会显示目标图像之外源图像部分，目标图像是透明的。</td>
+</tr>
+<tr>
+<td>destination-out</td>
+<td align="center">在源图像外显示目标图像。只有源图像外的目标图像部分会被显示，源图像是透明的。</td>
+</tr>
+<tr>
+<td>lighter</td>
+<td align="center">显示源图像 + 目标图像。</td>
+</tr>
+<tr>
+<td>copy</td>
+<td align="center">显示源图像。忽略目标图像。</td>
+</tr>
+<tr>
+<td>xor</td>
+<td align="center">使用异或操作对源图像与目标图像进行组合。</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+        <span class="kd">var</span> <span class="nx">CANVAS_WIDTH</span><span class="o">=</span><span class="mi">300</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">CANVAS_HEIGHT</span><span class="o">=</span><span class="mi">300</span><span class="p">;</span>
+
+        <span class="kd">var</span> <span class="nx">myCanvas</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;myCanvas&quot;</span><span class="p">);</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">width</span><span class="o">=</span><span class="nx">CANVAS_WIDTH</span><span class="p">;</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">height</span><span class="o">=</span><span class="nx">CANVAS_HEIGHT</span><span class="p">;</span>
+
+        <span class="c1">//ctx.globalAlpha=0.5;</span>
+
+        <span class="kd">var</span> <span class="nx">compositeArr</span><span class="o">=</span><span class="p">[</span>
+            <span class="s2">&quot;source-over&quot;</span><span class="p">,</span><span class="s2">&quot;destination-over&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;source-atop&quot;</span><span class="p">,</span><span class="s2">&quot;destination-atop&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;destination-in&quot;</span><span class="p">,</span><span class="s2">&quot;source-in&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;source-out&quot;</span><span class="p">,</span><span class="s2">&quot;destination-out&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;lighter&quot;</span><span class="p">,</span><span class="s2">&quot;copy&quot;</span><span class="p">,</span><span class="s2">&quot;xor&quot;</span>
+        <span class="p">];</span>
+
+
+        <span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="nx">l</span><span class="o">=</span><span class="nx">compositeArr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+        <span class="nx">draw</span><span class="p">(</span><span class="nx">compositeArr</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+
+        <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+            <span class="nx">i</span><span class="o">++</span><span class="p">;</span>
+            <span class="k">if</span><span class="p">(</span><span class="nx">i</span><span class="o">==</span><span class="nx">l</span><span class="p">){</span>
+                <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="nx">draw</span><span class="p">(</span><span class="nx">compositeArr</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+
+
+        <span class="p">},</span><span class="mi">1000</span><span class="p">);</span>
+
+
+
+        <span class="kd">function</span> <span class="nx">draw</span><span class="p">(</span><span class="nx">type</span><span class="p">){</span>
+            <span class="kd">var</span> <span class="nx">ctx</span><span class="o">=</span><span class="nx">myCanvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">);</span>
+
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">clearRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">300</span><span class="p">,</span><span class="mi">300</span><span class="p">);</span>
+
+
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillStyle</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">;</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
+
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">globalCompositeOperation</span><span class="o">=</span><span class="nx">type</span><span class="p">;</span>
+
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">();</span>
+                <span class="nx">ctx</span><span class="p">.</span><span class="nx">arc</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="o">*</span><span class="mi">2</span><span class="p">);</span>
+                <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillStyle</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">;</span>
+                <span class="nx">ctx</span><span class="p">.</span><span class="nx">fill</span><span class="p">();</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">closePath</span><span class="p">();</span>
+
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">globalCompositeOperation</span><span class="o">=</span><span class="s2">&quot;source-over&quot;</span><span class="p">;</span>
+
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">font</span><span class="o">=</span><span class="s2">&quot;30px Arial&quot;</span><span class="p">;</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">strokeText</span><span class="p">(</span><span class="nx">compositeArr</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span><span class="mi">0</span><span class="p">,</span><span class="mi">250</span><span class="p">);</span>
+
+
+        <span class="p">}</span>
+
+    <span class="o">&lt;</span><span class="err">/script&gt;</span>
+</pre></div>
+
+
+<p>效果图如下 <a href="demo20.html">查看案例</a></p>
+<p><img alt="" src="http://www.shitu91.com/cms/canvasSub/images/demo20.gif"></p>
+<p><a name="21-canvas-事件操作"></a>
+21. canvas 事件操作</p>
+<hr>
+<p>isPointInPath(x,y)  判断坐标为x,y的点是否再当前路径</p>
+<div class="codehilite"><pre>            <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+        <span class="kd">var</span> <span class="nx">CANVAS_WIDTH</span><span class="o">=</span><span class="mi">300</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">CANVAS_HEIGHT</span><span class="o">=</span><span class="mi">300</span><span class="p">;</span>
+
+        <span class="kd">var</span> <span class="nx">myCanvas</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;myCanvas&quot;</span><span class="p">);</span>
+
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">width</span><span class="o">=</span><span class="nx">CANVAS_WIDTH</span><span class="p">;</span>
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">height</span><span class="o">=</span><span class="nx">CANVAS_HEIGHT</span><span class="p">;</span>
+
+        <span class="kd">var</span> <span class="nx">huabi</span><span class="o">=</span><span class="nx">myCanvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">);</span>
+
+        <span class="nx">huabi</span><span class="p">.</span><span class="nx">fillRect</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
+        <span class="nx">huabi</span><span class="p">.</span><span class="nx">strokeStyle</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">;</span>
+        <span class="nx">huabi</span><span class="p">.</span><span class="nx">strokeRect</span><span class="p">(</span><span class="mi">110</span><span class="p">,</span><span class="mi">110</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
+
+        <span class="kd">function</span> <span class="nx">drawCircle</span><span class="p">(){</span>
+            <span class="nx">huabi</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">();</span>
+            <span class="nx">huabi</span><span class="p">.</span><span class="nx">arc</span><span class="p">(</span><span class="mi">160</span><span class="p">,</span><span class="mi">60</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="o">*</span><span class="mi">2</span><span class="p">);</span>
+            <span class="nx">huabi</span><span class="p">.</span><span class="nx">stroke</span><span class="p">();</span>
+            <span class="nx">huabi</span><span class="p">.</span><span class="nx">closePath</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="nx">drawCircle</span><span class="p">();</span>
+
+        <span class="kd">function</span> <span class="nx">drawSanjiao</span><span class="p">(){</span>
+            <span class="nx">huabi</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">();</span>
+            <span class="nx">huabi</span><span class="p">.</span><span class="nx">moveTo</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span><span class="mi">110</span><span class="p">);</span>
+            <span class="nx">huabi</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="mi">110</span><span class="p">,</span><span class="mi">210</span><span class="p">);</span>
+            <span class="nx">huabi</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">210</span><span class="p">);</span>
+            <span class="nx">huabi</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span><span class="mi">110</span><span class="p">);</span>
+            <span class="nx">huabi</span><span class="p">.</span><span class="nx">stroke</span><span class="p">();</span>
+            <span class="nx">huabi</span><span class="p">.</span><span class="nx">closePath</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="nx">drawSanjiao</span><span class="p">();</span>
+
+        <span class="nx">myCanvas</span><span class="p">.</span><span class="nx">onclick</span><span class="o">=</span><span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
+            <span class="kd">var</span> <span class="nx">e</span><span class="o">=</span><span class="nx">event</span><span class="o">||</span><span class="nb">window</span><span class="p">.</span><span class="nx">event</span><span class="p">;</span>
+
+            <span class="kd">var</span> <span class="nx">x</span><span class="o">=</span><span class="nx">e</span><span class="p">.</span><span class="nx">clientX</span><span class="o">-</span><span class="nx">myCanvas</span><span class="p">.</span><span class="nx">offsetLeft</span><span class="p">;</span>
+            <span class="kd">var</span> <span class="nx">y</span><span class="o">=</span><span class="nx">e</span><span class="p">.</span><span class="nx">clientY</span><span class="o">-</span><span class="nx">myCanvas</span><span class="p">.</span><span class="nx">offsetTop</span><span class="p">;</span>
+
+            <span class="k">if</span><span class="p">(</span><span class="nx">x</span><span class="o">&gt;=</span><span class="mi">10</span><span class="o">&amp;&amp;</span><span class="nx">x</span><span class="o">&lt;=</span><span class="mi">110</span><span class="o">&amp;&amp;</span><span class="nx">y</span><span class="o">&gt;=</span><span class="mi">10</span><span class="o">&amp;&amp;</span><span class="nx">y</span><span class="o">&lt;=</span><span class="mi">110</span><span class="p">){</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;你点中了黑色矩形&quot;</span><span class="p">);</span>
+            <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">x</span><span class="o">&gt;=</span><span class="mi">110</span><span class="o">&amp;&amp;</span><span class="nx">x</span><span class="o">&lt;=</span><span class="mi">210</span><span class="o">&amp;&amp;</span><span class="nx">y</span><span class="o">&gt;=</span><span class="mi">110</span><span class="o">&amp;&amp;</span><span class="nx">y</span><span class="o">&lt;=</span><span class="mi">210</span><span class="p">){</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;你点中了红色矩形&quot;</span><span class="p">);</span>
+            <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+                <span class="nx">drawCircle</span><span class="p">();</span>
+                <span class="k">if</span><span class="p">(</span><span class="nx">huabi</span><span class="p">.</span><span class="nx">isPointInPath</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">)){</span>
+                    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;你点击了圆圈&quot;</span><span class="p">);</span>
+                <span class="p">}</span>
+                <span class="nx">drawSanjiao</span><span class="p">();</span>
+                <span class="k">if</span><span class="p">(</span><span class="nx">huabi</span><span class="p">.</span><span class="nx">isPointInPath</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">)){</span>
+                    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;你点击了三角&quot;</span><span class="p">);</span>
+                <span class="p">}</span>
+
+            <span class="p">}</span>
+
+        <span class="p">}</span>
+
+    <span class="o">&lt;</span><span class="err">/script&gt;</span>
+</pre></div>
+
+
+<p>效果图如下 <a href="demo21.html">查看案例</a></p>
+<p><img alt="" src="http://www.shitu91.com/cms/canvasSub/images/demo21.gif"></p>
+        </article>
+      </div>
+    </div>
+  </body>
+</html>

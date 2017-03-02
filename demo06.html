@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas 画圆  画弧</title>
+</head>
+<body>
+	<canvas id="myCanvas" style="border:1px solid #ddd;display:block;margin:20px auto;"></canvas>
+	<script>
+		var myCanvas=document.getElementById("myCanvas");
+		myCanvas.width="500";
+		myCanvas.height="300";
+
+		var cxt=myCanvas.getContext("2d");
+		//空心圆
+		cxt.beginPath()
+			cxt.arc(250,150,100,0,Math.PI*2);
+		cxt.closePath();
+		cxt.stroke();
+
+		//空心圆
+		cxt.beginPath()
+			cxt.arc(250,150,50,0,Math.PI*2);
+		cxt.closePath();
+		cxt.fill();
+
+		//弧度
+		cxt.beginPath()
+			cxt.arc(250,150,130,Math.PI*3/2,Math.PI,true);
+			cxt.stroke();
+		cxt.closePath();
+
+		
+
+	
+	
+
+	</script>
+</body>
+</html>

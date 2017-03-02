@@ -1,0 +1,58 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas像素操作_补充  </title>
+	<style>
+		
+	</style>
+</head>
+<body>
+	<div style="width:300px;margin:auto">
+		原图
+		<img src="images/twodog.jpg" alt="">
+		canvas处理后
+	</div>
+	<canvas id="myCanvas" style="border:1px solid #ddd;display:block;margin:auto">
+	</canvas>
+
+
+
+	<script>
+		var CANVAS_WIDTH=300;
+		var CANVAS_HEIGHT=200;
+
+		var myCanvas=document.getElementById("myCanvas");
+		myCanvas.width=CANVAS_WIDTH;
+		myCanvas.height=CANVAS_HEIGHT;
+
+
+		var ctx=myCanvas.getContext("2d");
+
+		var img=new Image();
+		img.src="images/twodog.jpg";
+		img.onload=function(){
+			ctx.drawImage(img,0,0,CANVAS_WIDTH,CANVAS_HEIGHT);
+
+
+			var imgData=ctx.getImageData(0,0,CANVAS_WIDTH,CANVAS_HEIGHT);
+		    var pixcelNums=CANVAS_WIDTH*CANVAS_HEIGHT;
+		    for(var i=0;i<pixcelNums;i++){
+		    	imgData.data[i*4+0]=0;
+		    	/*imgData.data[i*4+1]=0;
+                imgData.data[i*4+2]=0;
+                imgData.data[i*4+3]=0;*/
+		    }
+
+		    ctx.putImageData(imgData,0,0);
+
+
+		}
+
+	</script>
+</body>
+</html>

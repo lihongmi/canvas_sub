@@ -1,0 +1,47 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas 裁剪  </title>
+
+</head>
+<body>
+
+	<canvas id="myCanvas" style="border:1px solid #ddd;display:block;margin:auto">
+	</canvas>
+
+
+
+	<script>
+		var CANVAS_WIDTH=300;
+		var CANVAS_HEIGHT=200;
+
+		var myCanvas=document.getElementById("myCanvas");
+		myCanvas.width=CANVAS_WIDTH;
+		myCanvas.height=CANVAS_HEIGHT;
+
+		var ctx=myCanvas.getContext("2d");
+
+		ctx.beginPath();
+		ctx.arc(150,100,80,0,2*Math.PI);
+		ctx.closePath();
+
+		var guniang=new Image();
+		guniang.src="images/guniang.jpg";
+		guniang.onload=function(){
+			ctx.save();
+			ctx.clip();
+			ctx.drawImage(guniang,50,0,200,200);
+			ctx.restore();
+
+		}
+
+		ctx.fillText("女朋友",250,150,50,50);
+
+	</script>
+</body>
+</html>
